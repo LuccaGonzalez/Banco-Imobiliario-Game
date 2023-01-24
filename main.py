@@ -98,5 +98,5 @@ Initializing()
 # definindo o jogador inicial
 initialPlayer = random.choice(players)
 print('\nO jogador {}, irá começar!'.format(initialPlayer))
-print('\n\n***** Rodada 1 *****')
+print('\n***** Rodada 1 *****')
 
