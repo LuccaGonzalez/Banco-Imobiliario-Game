@@ -1,12 +1,17 @@
 import random
+import pandas as pd
 
-lista = ['lucca', 'giovani', 'vinicios']
+global imbChoicePC
 
-choice = random.choice(lista)
-choiceIndex = lista.index(choice)
+imbChoicePC = random.randrange(0, 60)
 
-# choice = lista[2]
+# selectLine = pd.read_excel('Imoveis.xlsx', sheet_name='Plan Imoveis', index_col='Codigo')
+# selectLine = selectLine.loc[imbChoicePC]
+# selectValue = selectLine.iloc[]
 
-print(choice)
-print(choiceIndex)
+table = pd.read_excel('Imoveis.xlsx', sheet_name='Plan Imoveis', engine='openpyxl')
+immobileValue = table.iloc[imbChoicePC, 3]
 
+# print('\n{}'.format(imbChoicePC))
+# print('\n{}'.format(selectedLine))
+print(immobileValue)

@@ -88,15 +88,55 @@ def ChoiceImmobile():
     selectLine = selectLine.loc[imbChoicePC]
 
 
+def ChoiceInitialPlayer():
+
+    global players, initialPlayer
+
+    # definindo o jogador inicial
+    initialPlayer = random.choice(players)
+    chosenIndex = players.index(initialPlayer)
+
+    i = 0
+    newList = []
+
+    # enquanto o "i" for menor que o tamanho da "lista"
+    while i < len(players):
+
+        # adiciona o item escolhido da "lista" como PRIMEIRO item da "newList"
+        newList.append(players[chosenIndex])
+
+        # se o "index do item escolhido" for MENOR do que o "tamanho da lista" - 1, ou seja:
+        # Ex.: (1) é menor que (3 - 1)?
+        if (chosenIndex) < (len(players) - 1):
+            # se sim, então: "choseIndex" = 1 + 1 (2)
+            chosenIndex = chosenIndex + 1
+        else:
+            # se não, ou seja, quando "choseIndex" for igual a 2.
+            # Então: "choseIndex" é modificado para 0
+            chosenIndex = 0
+
+        # enquanto isso, incrementamos +1 no "i", para interromper o while
+        i = i+1
+
+    # atualiza a lista inicial para a nova seqûencia de jogadores
+    players = newList
+
+
 
 # Iniciando o Game
 Initializing()
 
-# with open('Players.csv', 'r', encoding='UTF8') as file:
-#         reader = csv.reader(file)
+# escolhe o jogador que irá começar
+ChoiceInitialPlayer()
 
-# definindo o jogador inicial
-initialPlayer = random.choice(players)
 print('\nO jogador {}, irá começar!'.format(initialPlayer))
 print('\n***** Rodada 1 *****')
 
+# Criar um loop onde o programa:
+# 1) Escolhe o imóvel aleatoriamente
+# 2) Verifica se o jogador escolhido pode comprar o imóvel
+# 3) Efetua a compra ou passa a vez
+# 4) segue para o próximo jogador
+# 5) repete os passos 1, 2 e 3
+# 6) Faz isso até o último jogador da lista
+# 7) Finaliza a rodada e inicia a próxima repetindo os mesmos passos
